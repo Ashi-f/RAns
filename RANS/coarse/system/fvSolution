@@ -46,8 +46,10 @@ solvers
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 5;
-
+    nNonOrthogonalCorrectors 0;
+    pRefCell       0;
+    pRefPoint      0;
+    pRefValue      0;
     residualControl
     {
         p               1e-5;
@@ -64,9 +66,9 @@ relaxationFactors
     }
     equations
     {
-        U               0.7;
-        k               0.7;
-        epsilon         0.7;
+        U               0.3;
+        k               0.3;
+        epsilon         0.3;
 
     }
 }

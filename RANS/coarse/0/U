@@ -33,7 +33,8 @@ boundaryField
 
     walls
     {
-        type            noSlip;
+        type            fixedValue;
+        value           uniform (1 0 0);
     }
 
     front
@@ -46,7 +47,8 @@ boundaryField
     }
     circle
     {
-        type            noSlip;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
 }
 

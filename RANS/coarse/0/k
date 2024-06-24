@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0.00375;
+internalField   uniform 1e-12;
 
 boundaryField
 {
@@ -25,7 +25,7 @@ boundaryField
     inlet
     {
         type            fixedValue;      // 5% turbulent intensity
-        value           uniform 0;
+        value           $internalField;
     }
 
     outlet
@@ -36,13 +36,13 @@ boundaryField
     walls
     {
         type            fixedValue;
-        value           uniform 0;
+        value           $internalField;
 
     }
     circle
     {
         type            fixedValue;
-        value           uniform 0;
+        value           $internalField;
 
     }
     front
