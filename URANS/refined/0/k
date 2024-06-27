@@ -17,11 +17,10 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0.00375;
+internalField   uniform 0;
 
 boundaryField
 {
-    #includeEtc "caseDicts/setConstraintTypes"
 
     inlet
     {
@@ -36,12 +35,14 @@ boundaryField
 
     walls
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           $internalField;
+
     }
     circle
     {
-        type            kqRWallFunction;
-        value           uniform 0.00375;
+        type            fixedValue;
+        value           $internalField;
 
     }
     front

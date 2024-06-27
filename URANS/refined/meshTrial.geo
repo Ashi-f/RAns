@@ -74,10 +74,10 @@ Curve Loop(5) = {18, -20, -11, 4, 12, 19};
 Plane Surface(5) = {5};
 
 // Define transfinite curves and surfaces
-Transfinite Curve {1, 5} =111 Using Progression 1;
-Transfinite Curve {2, 3, 8, 6} = 111 Using Progression 1;
-Transfinite Curve {10, 9} = 81 Using Progression 1;
-Transfinite Curve {11,12} = 81 Using Progression 1;
+Transfinite Curve {1, 5} = 81 Using Progression 1.05;
+Transfinite Curve {2, 3, 8, 6} = 81 Using Progression 1.05;
+Transfinite Curve {10, 9} = 41 Using Progression 1;
+Transfinite Curve {11,12} = 41 Using Progression 1;
 Transfinite Surface {2};
 Transfinite Surface {3};
 Transfinite Surface {4};
@@ -87,14 +87,16 @@ Transfinite Surface {4};
 Recombine Surface {2, 3, 4};
 
 // Set characteristic lengths
-Characteristic Length {2, 3} = 0.005;
-Characteristic Length {4, 5} = 0.005;
-Characteristic Length {10, 9} = 0.01;
+Characteristic Length {2, 3} = 0.02;
+Characteristic Length {4, 5} = 0.02;
+Characteristic Length {10, 9} = 0.02;
 Characteristic Length {8, 7} = 0.03;
-Characteristic Length {19, 20} = 0.3;
-Characteristic Length {13, 14} = 0.3;
-Characteristic Length {11, 12} = 0.1;
+Characteristic Length {19, 20} = 0.8;
+Characteristic Length {13, 14} = 0.8;
+
 // Additional transfinite curves
+Transfinite Curve {1, 5, 2, 3, 8, 6} = 60 Using Progression 1.1;
+Transfinite Curve {1, 5, 2, 3, 8, 6} = 60 Using Bump 1.1;
 
 // Extrude surfaces to create 3D mesh (commented out in the original script)
 Extrude {0, 0, -1} {

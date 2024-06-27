@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     simpleFoam;
+application     pisoFoam;
 
 startFrom       startTime;
 
@@ -23,9 +23,9 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         2000;
+endTime         2;
 
-deltaT          1;
+deltaT          0.001;
 
 writeControl    timeStep;
 
@@ -44,6 +44,38 @@ timeFormat      general;
 timePrecision   6;
 
 runTimeModifiable true;
+
+functions
+{
+    forceCoeffs
+    {
+        type            forceCoeffs;
+        functionObjectLibs ("libforces.so");
+        writeControl    timeStep;
+        writeInterval   1;
+
+        patches         (circle); // Name of the patch for the cylinder
+
+        pName           p;  // Pressure field
+        UName           U;  // Velocity field
+        rhoName         none; // For incompressible flow, set this to "none"
+
+        log             true; // Output log to standard output
+
+        rho             rhoInf;  // Fluid density, set according to your case (e.g., 1.0 for water)
+        rhoInf          1.0;  // Reference density, typically same as rho for incompressible flow
+
+        CofR            (0 0 0); // Center of rotation, usually (0 0 0)
+
+        liftDir         (0 1 0); // Direction of the lift force, adjust accordingly
+        dragDir         (1 0 0); // Direction of the drag force, adjust accordingly
+        pitchAxis       (0 0 1); // Pitch axis, adjust accordingly
+
+        magUInf         1.0; // Free stream velocity, set according to your case (e.g., 1.0 for 1 m/s)
+        lRef            1.0; // Reference length, typically the diameter of the cylinder (e.g., 1.0 for 1 meter)
+        Aref            1.0; // Reference area, typically lRef * length of the cylinder (e.g., 1.0 for 1 square meter)
+    }
+}
 
 // functions
 // {

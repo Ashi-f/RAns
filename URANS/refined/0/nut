@@ -22,24 +22,24 @@ boundaryField
 {
     inlet
     {
-        type            calculated;
-        value           uniform 0;
+        type            fixedValue;
+        value           $internalField;
     }
 
     outlet
     {
-        type            calculated;
-        value           uniform 0;
+        type            zeroGradient;
     }
 
     walls
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           $internalField;
     }
     circle
     {
-        type            nutkWallFunction;
-        value           uniform 0;
+        type            fixedValue;
+        value           $internalField;
     }
 
     front
